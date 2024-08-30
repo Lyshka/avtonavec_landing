@@ -5,11 +5,16 @@ import QuestItem from "./QuestItem";
 
 const Quest = () => {
   return (
-    <section id="quests" className="scroll-mt-20 flex flex-col gap-20">
-      <Title>Часто задаваемые вопросы</Title>
+    <section
+      id="quests"
+      className="scroll-mt-20 flex flex-col xl:gap-20 gap-12 xl:items-start items-center w-full"
+    >
+      <Title className="xl:text-left text-center">
+        Часто задаваемые вопросы
+      </Title>
 
-      <div className="flex justify-between">
-        <div className="max-w-[458px] h-[534px] w-full">
+      <div className="flex xl:justify-between xl:flex-row flex-col xl:gap-0 gap-10 xl:items-start items-center w-full">
+        <div className="xl:max-w-[458px] xl:h-[534px] w-full">
           <Image
             src={"/quest.webp"}
             alt="Мотоцикл"
@@ -19,7 +24,7 @@ const Quest = () => {
           />
         </div>
 
-        <ul className="max-w-[590px] w-full">
+        <ul className="xl:max-w-[590px] w-full">
           {questList.map(({ desc, id, title }) => (
             <QuestItem key={id} title={title} desc={desc} />
           ))}

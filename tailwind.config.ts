@@ -23,6 +23,9 @@ const config = {
       full: "9999px",
     },
     colors: {
+      transparent: {
+        DEFAULT: "transparent",
+      },
       dark: {
         DEFAULT: "#232323",
       },

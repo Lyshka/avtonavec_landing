@@ -5,7 +5,7 @@ interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 const Button: FC<IProps> = ({ children, ...props }) => {
   return (
     <button
-      className="text-xl leading-[25.14px] font-semibold text-white max-w-[280px] h-16 w-full flex justify-center items-center bg-red rounded-8 hover:bg-red-hover"
+      className="xl:text-xl text-base xl:leading-[25.14px] leading-[20.11px] text-center font-semibold text-white xl:max-w-[280px] xl:h-16 h-14 w-full flex justify-center items-center bg-red xl:rounded-8 rounded-7 hover:bg-red-hover"
       {...props}
     >
       {children}

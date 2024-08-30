@@ -8,7 +8,12 @@ interface IProps {
 
 const Title: FC<IProps> = ({ children, className }) => {
   return (
-    <h2 className={cn("font-semibold text-4xl leading-[50.4px]", className)}>
+    <h2
+      className={cn(
+        "font-semibold xl:text-4xl text-[22px] xl:leading-[50.4px] leading-[44px]",
+        className
+      )}
+    >
       {children}
     </h2>
   );

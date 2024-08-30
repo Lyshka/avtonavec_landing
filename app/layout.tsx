@@ -4,8 +4,10 @@ import NextTopLoader from "nextjs-toploader";
 import { ToastContainer } from "react-toastify";
 
 import "./globals.css";
+import 'react-toastify/dist/ReactToastify.css';
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer";
+import Modal from "@/components/Modal";
 
 const sourceSans = Source_Sans_3({ subsets: ["cyrillic"] });
 
@@ -23,11 +25,12 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={sourceSans.className}>
+        <ToastContainer position="top-right" />
         <NextTopLoader />
         <Header />
-        {/* {children} */}
+        {children}
         <Footer />
-        <ToastContainer position="top-right" />
+        <Modal />
       </body>
     </html>
   );

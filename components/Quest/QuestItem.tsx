@@ -18,20 +18,18 @@ const QuestItem: FC<IProps> = ({ desc, title }) => {
   return (
     <li
       className={cn(
-        "border-b last:border-b-0 pt-5 flex flex-col gap-4 border-dark/15 last:pb-0 first:pt-0",
-        isOpen && "pb-5"
+        "border-b last:border-b-0 xl:pt-5 pt-3.5 flex flex-col gap-4 border-dark/15 last:pb-0 first:pt-0",
+        isOpen && "xl:pb-5 pb-3.5"
       )}
     >
       <button
         onClick={handleOpen}
-        className="flex justify-between items-center gap-4 text-xl leading-7 w-full"
+        className="flex justify-between items-center gap-4 xl:text-xl text-base xl:leading-7 leading-[28px] w-full text-left"
       >
         {title}
 
         <svg
-          className={cn(isOpen && "rotate-45")}
-          width="32"
-          height="32"
+          className={cn("xl:w-8 w-4 xl:h-8 h-4", isOpen && "rotate-45")}
           viewBox="0 0 32 32"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +50,7 @@ const QuestItem: FC<IProps> = ({ desc, title }) => {
         )}
       >
         <div
-          className="text-base leading-6 min-h-0"
+          className="xl:text-base text-sm xl:leading-6 leading-[19.6px] min-h-0"
           dangerouslySetInnerHTML={{ __html: desc }}
         />
       </div>

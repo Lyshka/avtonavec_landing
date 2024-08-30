@@ -1,50 +1,50 @@
+"use client";
+
 import Image from "next/image";
 import Container from "./Container";
 import Button from "./Button";
-import { upBlockList } from "@/constants/upBlock";
+import Edges from "./Edges";
+import { useMobileMenu } from "@/store/mobileMenu";
 
 const UpBlock = () => {
+  const { setIsOpen } = useMobileMenu();
+
   return (
-    <main className="h-[800px] relative -mt-16 flex items-center">
+    <main className="xl:h-[800px] relative xl:-mt-16 -mt-[50px] flex items-center">
       <div className="w-full h-full absolute inset-0">
         <Image
           alt="Мотоциклист"
           src={"/upBlock.webp"}
           width={1920}
-          height={1920}
-          className="w-full h-full object-cover"
+          height={800}
+          className="w-full h-full object-cover xl:block hidden"
+        />
+
+        <Image
+          alt="Мотоциклист"
+          src={"/upBlockMobile.webp"}
+          width={390}
+          height={640}
+          className="w-full h-full object-cover xl:hidden block"
         />
       </div>
 
-      <Container className=" text-white relative z-[1]">
-        <div className="max-w-[593px] w-full flex flex-col gap-10">
-          <div className="flex flex-col gap-6">
-            <h1 className="font-semibold text-4xl leading-[50.4px] uppercase">
+      <Container className="text-white relative z-[1] xl:pt-0 pt-[185px] xl:pb-0 pb-20">
+        <div className="xl:max-w-[593px] w-full flex flex-col xl:gap-10 gap-24">
+          <div className="flex flex-col xl:gap-6 gap-8 xl:items-start items-center xl:text-left text-center">
+            <h1 className="font-semibold xl:text-4xl text-2xl xl:leading-[50.4px] leading-[33.6px] uppercase">
               Все для вашего передвижения - от классики до инноваций
             </h1>
 
-            <p>
+            <p className="xl:text-lg text-xl xl:leading-[25.2px] leading-7">
               Широкий выбор велосипедов, мотоциклов, скутеров
               <br /> и электрической техники в Брестской области
             </p>
           </div>
 
-          <Button>Заказать сейчас</Button>
+          <Button onClick={setIsOpen}>Заказать сейчас</Button>
 
-          <ul className="grid grid-cols-3 gap-6">
-            {upBlockList.map(({ desc, id, value }) => (
-              <li key={id} className="flex flex-col gap-2 group">
-                <span className="text-[40px] leading-[56px] font-bold group-hover:text-red transition-all duration-300">
-                  {value}
-                </span>
-
-                <p
-                  dangerouslySetInnerHTML={{ __html: desc }}
-                  className="text-base leading-[22.4px]"
-                />
-              </li>
-            ))}
-          </ul>
+          <Edges className="xl:grid hidden" />
         </div>
       </Container>
     </main>
