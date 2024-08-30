@@ -52,6 +52,14 @@
   #handleMobileMenu svg {
     @apply absolute opacity-0;
   }
+
+  header .listSocials a {
+    @apply hover-opacity;
+  }
+
+  header.dark {
+    @apply bg-dark/80 backdrop-blur-lg;
+  }
 }
 
 @layer utilities {

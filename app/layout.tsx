@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={sourceSans.className}>
         <NextTopLoader />
         <Header />
-        {children}
+        {/* {children} */}
         <Footer />
         <ToastContainer position="top-right" />
       </body>
