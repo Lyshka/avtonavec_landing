@@ -10,7 +10,7 @@ const config = {
   ],
   theme: {
     screens: {
-      xl: "1368px",
+      xl: "1200px",
     },
     gridTemplateRows: {
       0: "0fr",
