@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "velo-moto-malorita.by",
+        hostname: "admin.velo-moto-malorita.by",
         port: "",
         pathname: "/wp-content/uploads/**", // Убираем лишние слэши
       },
