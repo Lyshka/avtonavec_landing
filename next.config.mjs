@@ -1,4 +1,15 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "avtonavec.local",
+        port: "",
+        pathname: "/wp-content/uploads/**", // Убираем лишние слэши
+      },
+    ],
+  },
+};
 
 export default nextConfig;

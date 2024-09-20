@@ -3,8 +3,11 @@ import { FC } from "react";
 import Container from "../Container";
 import Link from "next/link";
 import { menu } from "@/constants/menu";
-import { siteInfo } from "@/constants/siteInfo";
 import Social from "../Social";
+
+import { useEffect, useState } from "react";
+import { ACF } from "@/types/acf";
+import { getInfo } from "@/lib/getInfo";
 
 interface IProps {
   isOpen: boolean;
@@ -12,6 +15,19 @@ interface IProps {
 }
 
 const MobileMenu: FC<IProps> = ({ isOpen, handle }) => {
+  const [siteInfo, setSiteInfo] = useState<ACF | null>(null);
+
+  useEffect(() => {
+    const fetchSiteInfo = async () => {
+      const { acf } = await getInfo();
+      setSiteInfo(acf);
+    };
+
+    fetchSiteInfo();
+  }, []);
+
+  if (!siteInfo) return
+
   return (
     <section className={cn("mobileMenu", isOpen && "open")}>
       <Container className="space-y-[60px] pt-24">

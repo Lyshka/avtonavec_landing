@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Title from "../Title";
-import { questList } from "@/constants/quest";
 import QuestItem from "./QuestItem";
+import { getInfo } from "@/lib/getInfo";
 
-const Quest = () => {
+const Quest = async () => {
+  const { acf: { questList } } = await getInfo();
+
   return (
     <section
       id="quests"
@@ -25,8 +27,8 @@ const Quest = () => {
         </div>
 
         <ul className="xl:max-w-[590px] w-full">
-          {questList.map(({ desc, id, title }) => (
-            <QuestItem key={id} title={title} desc={desc} />
+          {questList.map(({ desc, title }, idx) => (
+            <QuestItem key={idx} title={title} desc={desc} />
           ))}
         </ul>
       </div>

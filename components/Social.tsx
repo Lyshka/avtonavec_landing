@@ -1,7 +1,24 @@
-import { siteInfo } from "@/constants/siteInfo";
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { ACF } from "@/types/acf";
+import { getInfo } from "@/lib/getInfo";
 
 const Social = () => {
+  const [siteInfo, setSiteInfo] = useState<ACF | null>(null);
+
+  useEffect(() => {
+    const fetchSiteInfo = async () => {
+      const { acf } = await getInfo();
+      setSiteInfo(acf);
+    };
+
+    fetchSiteInfo();
+  }, []);
+
+  if (!siteInfo) return
+
   return (
     <ul className="flex items-center gap-[5px] listSocials">
       <li>

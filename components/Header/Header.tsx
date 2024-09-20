@@ -5,17 +5,19 @@ import Link from "next/link";
 
 import Container from "../Container";
 
-import { siteInfo } from "@/constants/siteInfo";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { menu } from "@/constants/menu";
 import MobileMenu from "./MobileMenu";
 import Social from "../Social";
+import { ACF } from "@/types/acf";
+import { getInfo } from "@/lib/getInfo";
 
 const Header = () => {
   const headerRef = useRef(null);
   const [scrollY, setScrollY] = useState(0);
   const [isOpenMobileMenu, setIsMobileMenu] = useState(false);
+  const [siteInfo, setSiteInfo] = useState<ACF | null>(null);
 
   const handleScroll = () => {
     setScrollY(window.scrollY);
@@ -26,12 +28,21 @@ const Header = () => {
   };
 
   useEffect(() => {
+    const fetchSiteInfo = async () => {
+      const { acf } = await getInfo();
+      setSiteInfo(acf);
+    };
+
+    fetchSiteInfo();
     window.addEventListener("scroll", handleScroll);
     handleScroll();
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  if (!siteInfo) return
 
   return (
     <>

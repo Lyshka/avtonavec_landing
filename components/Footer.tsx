@@ -1,10 +1,12 @@
-import { siteInfo } from "@/constants/siteInfo";
 import Container from "./Container";
 import Link from "next/link";
 import { menu } from "@/constants/menu";
 import Image from "next/image";
+import { getInfo } from "@/lib/getInfo";
 
-const Footer = () => {
+const Footer = async () => {
+  const { acf: siteInfo } = await getInfo();
+
   return (
     <footer className="bg-dark/5 xl:py-[50px] py-10">
       <Container className="flex xl:justify-between xl:gap-0 gap-16 xl:flex-row flex-col">
