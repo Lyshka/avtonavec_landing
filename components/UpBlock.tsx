@@ -5,9 +5,25 @@ import Container from "./Container";
 import Button from "./Button";
 import Edges from "./Edges";
 import { useMobileMenu } from "@/store/mobileMenu";
+import { ACF } from "@/types/acf";
+import { useEffect, useState } from "react";
+import { getInfo } from "@/lib/getInfo";
 
 const UpBlock = () => {
   const { setIsOpen } = useMobileMenu();
+
+  const [siteInfo, setSiteInfo] = useState<ACF | null>(null);
+
+  useEffect(() => {
+    const fetchSiteInfo = async () => {
+      const { acf } = await getInfo();
+      setSiteInfo(acf);
+    };
+
+    fetchSiteInfo();
+  }, []);
+
+  if (!siteInfo) return
 
   return (
     <main className="xl:h-[800px] relative xl:-mt-16 -mt-[50px] flex items-center">
@@ -33,13 +49,10 @@ const UpBlock = () => {
         <div className="xl:max-w-[593px] w-full flex flex-col xl:gap-10 gap-24">
           <div className="flex flex-col xl:gap-6 gap-8 xl:items-start items-center xl:text-left text-center">
             <h1 className="font-semibold xl:text-4xl text-2xl xl:leading-[50.4px] leading-[33.6px] uppercase">
-              Все для вашего передвижения - от классики до инноваций
+              {siteInfo.upBlock.title}
             </h1>
 
-            <p className="xl:text-lg text-xl xl:leading-[25.2px] leading-7">
-              Широкий выбор велосипедов, мотоциклов, скутеров
-              <br /> и электрической техники в Брестской области
-            </p>
+            <p dangerouslySetInnerHTML={{ __html: siteInfo.upBlock.desc }} className="xl:text-lg text-xl xl:leading-[25.2px] leading-7" />
           </div>
 
           <Button onClick={setIsOpen}>Заказать сейчас</Button>

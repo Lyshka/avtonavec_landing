@@ -5,7 +5,7 @@ import Image from "next/image";
 import { getInfo } from "@/lib/getInfo";
 
 const Footer = async () => {
-  const { acf: siteInfo } = await getInfo();
+  const { acf: { mainInfo } } = await getInfo();
 
   return (
     <footer className="bg-dark/5 xl:py-[50px] py-10">
@@ -14,7 +14,7 @@ const Footer = async () => {
           <Link href={"/"} className="xl:w-[130px] w-20 xl:h-[70px] h-10">
             <Image
               alt="Логотип"
-              src={siteInfo.logos.footer}
+              src={mainInfo.logos.footer}
               width={130}
               height={70}
               className="w-full h-full object-contain"
@@ -23,7 +23,7 @@ const Footer = async () => {
 
           <ul className="flex flex-col xl:gap-3 gap-4 text-xs leading-[15.08px]">
             <li>
-              <Link className="hover:text-red underline" href={"/"}>
+              <Link className="hover:text-red underline" href={mainInfo.conf} target="_blank">
                 Политика конфиденциальности
               </Link>
             </li>
@@ -71,21 +71,21 @@ const Footer = async () => {
             <div className="flex flex-col gap-2.5">
               <Link
                 className="xl:text-base text-sm xl:leading-[20.11px] leading-[17.6px] font-bold hover:text-red"
-                href={`tel:${siteInfo.telInfo.format}`}
+                href={`tel:${mainInfo.telInfo.format}`}
               >
-                {siteInfo.telInfo.value}
+                {mainInfo.telInfo.value}
               </Link>
 
               <Link
                 className="xl:text-lg text-sm xl:leading-[22.63px] leading-[17.6px] font-semibold text-dark/70 hover:text-red"
-                href={`mailto:${siteInfo.mail}`}
+                href={`mailto:${mainInfo.mail}`}
               >
-                {siteInfo.mail}
+                {mainInfo.mail}
               </Link>
             </div>
 
             <address className="xl:text-sm text-xs xl:leading-[19.6px] leading-[16.8px] text-dark/70 xl:max-w-[195px] max-w-[146px] w-full">
-              {siteInfo.address}
+              {mainInfo.address}
             </address>
           </div>
         </div>

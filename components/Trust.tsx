@@ -1,21 +1,24 @@
 import Image from "next/image";
 import Title from "./Title";
 import { trustList } from "@/constants/trsut";
+import { getInfo } from "@/lib/getInfo";
 
-const Trust = () => {
+const Trust = async () => {
+  const { acf: { howHope: { title, edges, img } } } = await getInfo();
+
   return (
     <section className="flex flex-col xl:gap-20 gap-[60px] xl:items-start items-center w-full">
-      <Title className="text-center">Почему нам доверяют?</Title>
+      <Title className="text-center">{title}</Title>
 
       <div className="flex xl:justify-between xl:gap-0 gap-20 xl:flex-row flex-col-reverse w-full">
         <ul className="xl:max-w-96 w-full flex flex-col xl:items-start items-center xl:gap-16 gap-10">
-          {trustList.map(({ desc, icon, id, title }) => (
+          {edges.map(({ desc, img, title }, idx) => (
             <li
-              key={id}
+              key={idx}
               className="flex xl:flex-row flex-col items-center xl:gap-10 gap-6 group"
             >
               <Image
-                src={icon}
+                src={img}
                 alt="Иконка"
                 width={48}
                 height={48}
@@ -35,7 +38,7 @@ const Trust = () => {
 
         <div className="xl:max-w-[659px] w-full xl:h-[500px] overflow-hidden">
           <Image
-            src={"/trust.webp"}
+            src={img}
             alt="Мотоцикл"
             width={659}
             height={500}

@@ -4,7 +4,7 @@ import QuestItem from "./QuestItem";
 import { getInfo } from "@/lib/getInfo";
 
 const Quest = async () => {
-  const { acf: { questList } } = await getInfo();
+  const { acf: { quest } } = await getInfo();
 
   return (
     <section
@@ -18,7 +18,7 @@ const Quest = async () => {
       <div className="flex xl:justify-between xl:flex-row flex-col xl:gap-0 gap-10 xl:items-start items-center w-full">
         <div className="xl:max-w-[458px] xl:h-[534px] w-full">
           <Image
-            src={"/quest.webp"}
+            src={quest.img_quest}
             alt="Мотоцикл"
             width={458}
             height={534}
@@ -27,7 +27,7 @@ const Quest = async () => {
         </div>
 
         <ul className="xl:max-w-[590px] w-full">
-          {questList.map(({ desc, title }, idx) => (
+          {quest.questList.map(({ desc, title }, idx) => (
             <QuestItem key={idx} title={title} desc={desc} />
           ))}
         </ul>

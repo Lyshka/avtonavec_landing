@@ -23,7 +23,7 @@ const Social = () => {
     <ul className="flex items-center gap-[5px] listSocials">
       <li>
         <Link
-          href={`viber://chat?number=%2B${siteInfo.telInfo.notPlus}`}
+          href={`viber://chat?number=%2B${siteInfo.mainInfo.telInfo.notPlus}`}
           target="_blank"
         >
           <svg
@@ -55,7 +55,7 @@ const Social = () => {
       </li>
 
       <li>
-        <Link href={`https://t.me/${siteInfo.telInfo.format}`} target="_blank">
+        <Link href={`https://t.me/${siteInfo.mainInfo.telInfo.format}`} target="_blank">
           <svg
             className="bg-[#2aabee] rounded-full"
             width="26"
@@ -91,7 +91,7 @@ const Social = () => {
 
       <li>
         <Link
-          href={`https://wa.me/${siteInfo.telInfo.notPlus}`}
+          href={`https://wa.me/${siteInfo.mainInfo.telInfo.notPlus}`}
           target="_blank"
         >
           <svg

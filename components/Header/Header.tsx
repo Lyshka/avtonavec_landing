@@ -60,7 +60,7 @@ const Header = () => {
           >
             <Image
               alt="Логотип"
-              src={siteInfo.logos.header}
+              src={siteInfo.mainInfo.logos.header}
               width={78}
               height={41}
               className="w-full h-full object-contain"
@@ -85,9 +85,9 @@ const Header = () => {
           <div className="xl:flex hidden items-center gap-7">
             <Link
               className="text-base leading-[20.11px] text-white hover:text-red font-bold"
-              href={`tel:${siteInfo.telInfo.format}`}
+              href={`tel:${siteInfo.mainInfo.telInfo.format}`}
             >
-              {siteInfo.telInfo.value}
+              {siteInfo.mainInfo.telInfo.value}
             </Link>
 
             <Social />

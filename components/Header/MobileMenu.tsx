@@ -50,13 +50,13 @@ const MobileMenu: FC<IProps> = ({ isOpen, handle }) => {
         <div className="flex flex-col gap-3.5 text-base leading-[20.11px]">
           <Link
             className="font-bold hover:text-red"
-            href={`tel:${siteInfo.telInfo.format}`}
+            href={`tel:${siteInfo.mainInfo.telInfo.format}`}
           >
-            {siteInfo.telInfo.value}
+            {siteInfo.mainInfo.telInfo.value}
           </Link>
 
-          <Link className="hover:text-red" href={`mailto:${siteInfo.mail}`}>
-            {siteInfo.mail}
+          <Link className="hover:text-red" href={`mailto:${siteInfo.mainInfo.mail}`}>
+            {siteInfo.mainInfo.mail}
           </Link>
 
           <Social />
